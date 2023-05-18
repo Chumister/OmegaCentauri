@@ -33,7 +33,7 @@ public class LocController {
             @ApiResponse(code = 404, message = "Result(s) not found")
     })
     public List<Result> getResults(@RequestParam(value="q") String query){
-        List<Result> results = locService.getResults(query);
+        LocController results = locService.getResults(query);
         if(CollectionUtils.isEmpty(results)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result(s) not found.");
         }

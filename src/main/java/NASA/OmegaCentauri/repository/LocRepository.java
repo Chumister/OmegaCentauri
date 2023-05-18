@@ -17,7 +17,9 @@ public class LocRepository {
                 .baseUrl(baseUrl)
                 .build();
     }
-
+    public LocRepository(WebClient webClientMock) {
+        this.webClient = webClientMock;
+    }
     public LocResponse getResults(String query) {
         return (LocResponse) webClient.get()
                 .uri(uriBuilder -> uriBuilder

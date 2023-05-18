@@ -1,4 +1,4 @@
-package NASA.OmegaCentauri;
+package NASA.OmegaCentauri.presentation;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class OmegaCentauriApplicationTests {
 		String expected = "redirect:swagger-ui.html";
 
 		//when
-		String actual = omega.toString();
+		String actual = omega.home();
 
 		//then
 		assertEquals(expected, actual);
