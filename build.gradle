@@ -11,6 +11,25 @@ sourceCompatibility = '17'
 repositories {
 	mavenCentral()
 }
+sourceSets {
+	intTest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+configurations {
+	intTestImplementation.extendsFrom testImplementation
+	intTestRunTimeOnly.extendsFrom runtimeOnly
+}
+task intTest(type: Test) {
+	useJUnitPlatform()
+	description = 'Runs the integration tests.'
+	group = 'verification'
+
+	testClassesDirs = sourceSets.intTest.output.classesDirs
+	classpath = sourceSets.intTest.runtimeClasspath
+	shouldRunAfter test
+}
 
 dependencies {
 	implementation 'org.javacord:javacord:3.7.0'
@@ -34,3 +53,5 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+check.dependsOn intTest
+
